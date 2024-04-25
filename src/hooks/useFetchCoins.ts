@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 
 export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coins: Coin[]; vsCurrency: string; perPage: number; viewMode: string }) => {
   const dispatch = useDispatch();
+  const CACHE_DURATION = 300000;
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -17,8 +18,31 @@ export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coi
 
   const fetchAndUpdateCoins = async (isCombine: boolean) => {
     setIsLastVisible(true);
-    const scrapIds = getAllBookmarks();
     setLoading(true);
+
+    const scrapIds = getAllBookmarks();
+    if (viewMode === "북마크 보기" && scrapIds.length === 0) {
+      return false;
+    }
+
+    const cacheKey = `coins-${vsCurrency}-${perPage}-${pageIndex}-${viewMode === "북마크 보기" ? scrapIds.join(",") : ""}`;
+    const cachedData = sessionStorage.getItem(cacheKey);
+    console.log(cacheKey);
+
+    if (cachedData) {
+      const { data, timestamp } = JSON.parse(cachedData);
+      if (Date.now() - timestamp < CACHE_DURATION) {
+        if (isCombine) {
+          dispatch(pushCoins(data));
+        } else {
+          setPageIndex(1);
+          dispatch(setCoins(data));
+        }
+        setIsLastVisible(data.length < perPage);
+        setLoading(false);
+        return;
+      }
+    }
     const params = {
       vs_currency: vsCurrency,
       per_page: perPage,
@@ -26,12 +50,9 @@ export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coi
       ...(viewMode === "북마크 보기" && { coinIds: scrapIds }),
     };
 
-    if (viewMode === "북마크 보기" && scrapIds.length === 0) {
-      return setLoading(false);
-    }
-
     try {
       const data = await fetchCoins(params);
+      sessionStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
       if (data.length === perPage) {
         setIsLastVisible(false);
       }
@@ -39,7 +60,6 @@ export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coi
         dispatch(pushCoins(data));
       } else {
         setPageIndex(1);
-        dispatch(setCoins([]));
         dispatch(setCoins(data));
       }
     } catch (error) {
@@ -63,7 +83,7 @@ export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coi
   }, [viewMode, vsCurrency, perPage]);
 
   useEffect(() => {
-    dispatch(setCoins([]));
+    // dispatch(setCoins([]));
     dispatch(setInitializeFilter(null));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
