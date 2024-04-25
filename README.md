@@ -1,19 +1,23 @@
-##### CoinGecko API를 가상화폐 정보 제공 앱
+# CoinGecko API를 가상화폐 정보 제공 앱
+
+종류 : 개인 프로젝트 (과제) <br/>
+개발 기간 : 4.23 ~ 4.25 (3일) <br/>
+기술 스택 : React, Redux, TailwindCSS <br/>
 
 ## 설치 방법
-
-1. 클론
-   $ git clone https://github.com/hasangwon/coingecko-api-usage.git
-   $ cd PROJECT
+```
+1. 클론 
+$ git clone https://github.com/hasangwon/coingecko-api-usage.git
+$ cd PROJECT
 
 2. 설치
-   $ npm install
-   or
-   $ yarn install
+$ npm install
+      or
+$ yarn install
 
 3. 실행
-   $ npm run start
-
+$ npm run start
+```
 ## 프로젝트 구조
 
 ```
