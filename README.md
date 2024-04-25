@@ -2,7 +2,7 @@
 
 종류 : 개인 프로젝트 (과제) <br/>
 개발 기간 : 4.23 ~ 4.25 (3일) <br/>
-기술 스택 : React, Redux, TailwindCSS <br/>
+기술 스택 : React, Redux Toolkit, TailwindCSS <br/>
 
 ## 설치 방법
 
