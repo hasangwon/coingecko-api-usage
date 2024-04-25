@@ -3,6 +3,7 @@
 종류 : 개인 프로젝트 (과제) <br/>
 개발 기간 : 4.23 ~ 4.25 (3일) <br/>
 기술 스택 : React, Redux Toolkit, TailwindCSS <br/>
+추가 내용 : 반응형 구현, 429 Too Many Requests 해결을 위한 캐싱(세션 스토리지)로직 구현(5분 유지)
 
 ## 설치 방법
 
