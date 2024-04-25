@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+##### CoinGecko API를 암호화폐 정보 제공 앱
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Start with cloning this repo on your local machine:
 
-## Available Scripts
+$ git clone https://github.com/hasangwon/coingecko-api-usage.git
+$ cd PROJECT
+To install and set up the library, run:
 
-In the project directory, you can run:
+$ npm install
 
-### `npm start`
+Usage
+Serving the app
+$ npm run start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+남은 작업 : 코드 정리, 스크랩 시 토스트 띄우기, 테스트 등
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+src/
+│
+├── api/
+│ └── coinApi.ts                 # CoinGecko API와의 통신을 관리하는 함수들
+│
+├── app/
+│ ├── globalSlice.ts             # 전역 Redux 상태 관리의 슬라이스 정의
+│ ├── store.ts                   # Redux 스토어 설정과 미들웨어 구성
+│ └── hooks.ts                   # Redux 상태를 위한 커스텀 훅
+│
+├── components/                  # 재사용 가능한 UI 컴포넌트 모음
+│ ├── common/
+│ │ ├── Error.tsx                # 에러 표시 컴포넌트
+│ │ ├── Loading.tsx              # 로딩 컴포넌트
+│ ├── CoinList.tsx               # 암호화폐 목록을 보여주는 컴포넌트
+│ ├── GNB.tsx                    # 글로벌 내비게이션 바 컴포넌트
+│ └── PriceCalculator.tsx        # 가격 계산 및 변환을 위한 컴포넌트
+│
+├── pages/                       # 각 페이지 별 컴포넌트
+│ ├── Detail.tsx                 # 암호화폐 상세 정보 페이지 컴포넌트
+│ ├── Home.tsx                   # 홈 페이지 컴포넌트
+│ └── Scrap.tsx                  # 스크랩한 암호화폐 목록 페이지 컴포넌트
+│
+├── style/ 
+│ ├── global.css                 # 전역 CSS 스타일
+│ 
+├── types/ 
+│ ├─ react-app-env.d.ts          # React 스크립트 타입 정의
+│ └── type.d.ts                  # 애플리케이션에서 사용되는 타입 정의
+│
+├── utils
+│ ├─ localStorage.ts             # 로컬 스토리지 관리 유틸리티 함수
+│ └─ printCurrencySymbol.ts      # 통화 기호 출력 유틸리티 함수
+│
+├── App.tsx                      # 애플리케이션의 루트 컴포넌트
+└── index.tsx                    # 애플리케이션의 진입점
