@@ -2,7 +2,7 @@ import React from "react";
 
 const Error = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center ">
+    <div className="w-full h-full flex flex-col items-center">
       <p className="font-semibold">에러가 발생했습니다.</p>
       <div className="mt-4">
         <button

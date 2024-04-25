@@ -16,3 +16,14 @@ export type Coin = {
     };
   };
 };
+
+export interface FetchCoinsParams {
+  vs_currency: string;
+  per_page: number;
+  page: number;
+  order?: string;
+  sparkline?: boolean;
+  locale?: string;
+  price_change_percentage?: string;
+  coinIds?: string[];
+}

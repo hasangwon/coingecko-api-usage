@@ -1,8 +1,8 @@
 import { isArray } from "lodash";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Coin } from "../\btypes/type";
-import { printCurrencySymbol } from "../utils/printCurrencySymbol";
+import { Coin } from "../../types/type";
+import { printCurrencySymbol } from "../../utils/printCurrencySymbol";
 
 interface CoinListProps {
   coins: Coin[];
@@ -14,6 +14,7 @@ interface CoinListProps {
 }
 
 const CoinList = ({ coins, scrapCoinIds, onScrapClick, currency, isLastVisible = false, handleMoreClick = () => {} }: CoinListProps) => {
+  const path = window.location.pathname;
   return (
     <>
       <div className="flex items-center w-full font-semibold pr-4 text-xs text-gray-500 bg-gray-100 py-3">
@@ -56,12 +57,12 @@ const CoinList = ({ coins, scrapCoinIds, onScrapClick, currency, isLastVisible =
               </div>
             ))
           ) : coins === null ? (
-            <div className="flex w-full bg-white">
-              <div className="flex justify-center w-full">불러오기에 실패했습니다.</div>
+            <div className="mt-8 text-gray-700">
+              <p className="w-full flex justify-center font-semibold">불러오기에 실패했습니다.</p>
             </div>
           ) : (
-            <div>
-              <div className="loader" />
+            <div className="mt-8 text-gray-700">
+              <p className="w-full flex justify-center font-semibold">{path === "/scrap" ? "아직 스크랩된 가상자산이 없습니다" : "불러오기에 실패했습니다."}</p>
             </div>
           )}
           {!isLastVisible && (

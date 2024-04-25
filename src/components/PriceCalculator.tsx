@@ -6,7 +6,7 @@ const PriceCalculator = ({ symbol, coin, currency }: { symbol: string; coin: Coi
   const [coinAmount, setCoinAmount] = useState("");
   const [currencyAmount, setCurrencyAmount] = useState("");
 
-  const handleCoinAmountChange = (event: any) => {
+  const handleCoinAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     if (/^\d*\.?\d{0,8}$/.test(value)) {
       setCoinAmount(value);
@@ -15,7 +15,7 @@ const PriceCalculator = ({ symbol, coin, currency }: { symbol: string; coin: Coi
     }
   };
 
-  const handleCurrencyAmountChange = (event: any) => {
+  const handleCurrencyAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     if (value === "" || (/^\d+$/.test(value) && value[0] !== "0")) {
       setCurrencyAmount(value);
@@ -27,7 +27,7 @@ const PriceCalculator = ({ symbol, coin, currency }: { symbol: string; coin: Coi
   useEffect(() => {
     setCoinAmount("1");
     setCurrencyAmount((1 * exchangeRate).toFixed(2));
-  }, [currency]);
+  }, [currency, exchangeRate]);
 
   return (
     <div className="relative w-full bg-gray-300 justify-center py-10 mt-8 flex items-center mobileFlex">
