@@ -22,7 +22,8 @@ export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coi
 
     const scrapIds = getAllBookmarks();
     if (viewMode === "북마크 보기" && scrapIds.length === 0) {
-      return false;
+      dispatch(setCoins([]));
+      return setLoading(false);
     }
 
     const cacheKey = `coins-${vsCurrency}-${perPage}-${pageIndex}-${viewMode === "북마크 보기" ? scrapIds.join(",") : ""}`;
@@ -63,6 +64,7 @@ export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coi
         dispatch(setCoins(data));
       }
     } catch (error) {
+      dispatch(setCoins([]));
       toast.error(`요청이 너무 많습니다. 잠시 후 다시 시도해주세요.`, { autoClose: 2000 });
       setError("error");
       setLoading(false);
