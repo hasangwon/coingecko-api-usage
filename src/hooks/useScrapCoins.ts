@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getAllBookmarks, toggleBookmark } from "../utils/localStorage";
 import { setCoins } from "../app/globalSlice";
 import { useDispatch } from "react-redux";
-import { Coin } from "../\btypes/type";
+import { Coin } from "../types/type";
 import _ from "lodash";
 import { toast } from "react-toastify";
 

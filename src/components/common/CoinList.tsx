@@ -1,7 +1,7 @@
 import { isArray } from "lodash";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Coin } from "../../types/type";
+import { Coin } from "../../types/type";
 import { printCurrencySymbol } from "../../utils/printCurrencySymbol";
 
 interface CoinListProps {

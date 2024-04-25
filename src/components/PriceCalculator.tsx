@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Coin } from "../\btypes/type";
+import { Coin } from "../types/type";
 
 const PriceCalculator = ({ symbol, coin, currency }: { symbol: string; coin: Coin; currency: string }) => {
   const exchangeRate = currency === "krw" ? coin.market_data.current_price.krw : coin.market_data.current_price.usd;

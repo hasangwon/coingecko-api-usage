@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchCoinData, fetchCoins } from "../api/coinApi";
-import { Coin } from "../\btypes/type";
+import { Coin } from "../types/type";
 import { getAllBookmarks } from "../utils/localStorage";
 import { useDispatch } from "react-redux";
 import { setCoins, setInitializeFilter } from "../app/globalSlice";

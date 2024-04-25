@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FetchCoinsParams } from "../\btypes/type";
+import { FetchCoinsParams } from "../types/type";
 
 const baseURL = "https://api.coingecko.com/api/v3/coins";
 
