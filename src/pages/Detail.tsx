@@ -12,6 +12,7 @@ const Detail = () => {
   const { scrapCoinIds, onScrapClick } = useScrapCoinList({ coins: [], viewMode: "전체보기" });
   const [isShownDescription, setIsShownDescription] = useState(false);
 
+  console.log(coin);
   return loading ? (
     <Loading />
   ) : error ? (
@@ -79,16 +80,15 @@ const Detail = () => {
           </div>
         </div>
         <PriceCalculator symbol={coin.symbol.toUpperCase()} coin={coin} currency={currency} />
-        {coin.description.ko ||
-          (coin.description.en && (
-            <>
-              <button className="w-full py-4 text-sm mt-8" onClick={() => setIsShownDescription(!isShownDescription)}>
-                설명보기 ▼
-              </button>
-              <hr />
-              {isShownDescription && <p className="mt-4">{coin.description.ko ? coin.description.ko : coin.description.en}</p>}
-            </>
-          ))}
+        {(coin.description.ko || coin.description.en) && (
+          <>
+            <button className="w-full py-4 text-sm mt-8" onClick={() => setIsShownDescription(!isShownDescription)}>
+              설명보기 ▼
+            </button>
+            <hr />
+          </>
+        )}
+        {isShownDescription && <p className="mt-4">{coin.description.ko ? coin.description.ko : coin.description.en}</p>}
       </div>
     )
   );
