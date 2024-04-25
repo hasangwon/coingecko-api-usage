@@ -6,18 +6,24 @@
 
 ## 설치 방법
 
-```
+
 1. 클론
-$ git clone https://github.com/hasangwon/coingecko-api-usage.git
-$ cd PROJECT
-
-2. 설치
-$ npm install
-      or
-$ yarn install
-
+```
+git clone https://github.com/hasangwon/coingecko-api-usage.git
+```
+```
+cd PROJECT
+```
+2. 설치 (npm or yarn)
+```
+npm install
+```
+```
+yarn install
+```
 3. 실행
-$ npm run start
+```
+npm run start
 ```
 
 ## 프로젝트 구조
