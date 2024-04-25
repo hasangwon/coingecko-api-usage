@@ -22,6 +22,9 @@ const globalSlice = createSlice({
     setCoins(state, action: PayloadAction<Coin[]>) {
       state.coins = action.payload;
     },
+    pushCoins(state, action: PayloadAction<Coin[]>) {
+      state.coins = [...state.coins, ...action.payload];
+    },
     setViewMode(state, action: PayloadAction<"전체보기" | "북마크 보기">) {
       state.viewMode = action.payload;
     },
@@ -40,5 +43,5 @@ const globalSlice = createSlice({
   },
 });
 
-export const { setViewMode, setVsCurrency, setPerPage, setInitializeFilter, setCoins } = globalSlice.actions;
+export const { setViewMode, setVsCurrency, setPerPage, setInitializeFilter, setCoins, pushCoins } = globalSlice.actions;
 export default globalSlice.reducer;

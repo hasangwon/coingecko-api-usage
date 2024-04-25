@@ -3,7 +3,8 @@ import { fetchCoinData, fetchCoins } from "../api/coinApi";
 import { Coin } from "../types/type";
 import { getAllBookmarks } from "../utils/localStorage";
 import { useDispatch } from "react-redux";
-import { setCoins, setInitializeFilter } from "../app/globalSlice";
+import { pushCoins, setCoins, setInitializeFilter } from "../app/globalSlice";
+import { toast } from "react-toastify";
 
 export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coins: Coin[]; vsCurrency: string; perPage: number; viewMode: string }) => {
   const dispatch = useDispatch();
@@ -35,13 +36,15 @@ export const useFetchCoinList = ({ coins, vsCurrency, perPage, viewMode }: { coi
         setIsLastVisible(false);
       }
       if (isCombine) {
-        dispatch(setCoins([...coins, ...data]));
+        dispatch(pushCoins(data));
       } else {
         setPageIndex(1);
+        dispatch(setCoins([]));
         dispatch(setCoins(data));
       }
     } catch (error) {
-      setError("Failed to load more coin data. Please try again later.");
+      toast.error(`요청이 너무 많습니다. 잠시 후 다시 시도해주세요.`, { autoClose: 2000 });
+      setError("error");
       setLoading(false);
     } finally {
       setError(null);
@@ -92,6 +95,7 @@ export const useFetchCoin = ({ id }: { id: string | undefined }) => {
         setCoin(data);
         setLoading(false);
       } catch (error) {
+        toast.error(`요청이 너무 많습니다. 잠시 후 다시 시도해주세요.`, { autoClose: 2000 });
         setError("error");
         setLoading(false);
       }
