@@ -5,8 +5,9 @@
 기술 스택 : React, Redux, TailwindCSS <br/>
 
 ## 설치 방법
+
 ```
-1. 클론 
+1. 클론
 $ git clone https://github.com/hasangwon/coingecko-api-usage.git
 $ cd PROJECT
 
@@ -18,6 +19,7 @@ $ yarn install
 3. 실행
 $ npm run start
 ```
+
 ## 프로젝트 구조
 
 ```
@@ -52,3 +54,18 @@ $ npm run start
 │   ├── App.tsx                        # 애플리케이션의 루트 컴포넌트
 │   └── index.tsx                      # 애플리케이션의 진입점
 ```
+
+## 화면
+
+1. 홈 화면(가상화폐 리스트)<br/>
+   <img src="https://github.com/hasangwon/coingecko-api-usage/assets/75872687/146fb976-1ab7-42d2-a418-f986c3d57bbe" width="800"/>
+   <br/>
+2. 북마크 화면<br/>
+   <img src="https://github.com/hasangwon/coingecko-api-usage/assets/75872687/e043a91e-f4bb-4dc6-9688-1fa8536edd16" width="800"/>
+   <br/>
+3. 상세 화면<br/>
+   <img src="https://github.com/hasangwon/coingecko-api-usage/assets/75872687/8f96d3a4-28fa-4495-b1d6-425fb93a0b31" width="800"/>
+   <br/>
+   추가) 반응형 화면<br/>
+   <img src="https://github.com/hasangwon/coingecko-api-usage/assets/75872687/9e48768c-9e2c-46d5-86ef-922bcb195d99" width="250"/>
+   <img src="https://github.com/hasangwon/coingecko-api-usage/assets/75872687/44ea0b21-570b-4210-9c74-b19dc51b6734" width="250"/>
